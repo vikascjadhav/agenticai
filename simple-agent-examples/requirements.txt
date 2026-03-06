@@ -1,0 +1,7 @@
+langchain>=1.2.2          # Latest stable LangChain
+langgraph>=1.0.10         # Latest stable LangGraph (v1.0+)
+langchain-core>=1.2.17    # Essential base abstractions
+langchain-google-genai==4.2.1  # Google Gemini API integration
+python-dotenv==1.2.1          # For environment variable management
+pydantic==2.12.5              # Data validation and settings management
+langchain-openai==1.1.10      # OpenAI API integration (for local Gemma model)
