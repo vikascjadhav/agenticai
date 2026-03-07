@@ -2,7 +2,7 @@ from unittest import result
 from urllib import response
 from xml.parsers.expat import model
 
-#from langchain.agents import create_agent
+# from langchain.agents import create_agent
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -15,7 +15,6 @@ from langchain_openai import ChatOpenAI
 # )
 
 
-
 import os
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
@@ -23,15 +22,17 @@ from langchain_core.output_parsers import StrOutputParser
 import json
 
 import warnings
-warnings.filterwarnings('ignore')
+
+warnings.filterwarnings("ignore")
 
 load_dotenv()
+
 
 def local_gemma_model() -> ChatOpenAI:
     return ChatOpenAI(
         base_url="http://localhost:1234/v1",
         api_key=os.environ["API_KEY"],
-        model="google/gemma-3-4b"
+        model="google/gemma-3-4b",
     )
 
 
@@ -39,7 +40,14 @@ def local_gemma_model() -> ChatOpenAI:
 def fruits_and_vegetables():
     """Tool to generate list items for fruits and vegetables."""
     return [
-        "Apple", "Banana", "Carrot", "Spinach", "Grapes", "Broccoli", "Custom-fruit-list-item-1", "Custom-fruit-list-item-2"
+        "Apple",
+        "Banana",
+        "Carrot",
+        "Spinach",
+        "Grapes",
+        "Broccoli",
+        "Custom-fruit-list-item-1",
+        "Custom-fruit-list-item-2",
     ]
 
 
@@ -50,10 +58,11 @@ def weather_tool(location: str) -> str:
     # For demonstration purposes, we'll return a static response.
     return f"The current weather in {location} is sunny with a temperature of 25°C."
 
+
 def weather_agent():
 
     llm = local_gemma_model()
-   
+
     agent = create_agent(
         model=llm,
         system_prompt="You are a helpful assistant that provides weather information.",
@@ -61,7 +70,7 @@ def weather_agent():
     )
 
     result = agent.invoke(
-          {"messages":[{"role":"user","content":"weather in Tokyo and Mumbai"}]}
+        {"messages": [{"role": "user", "content": "weather in Tokyo and Mumbai"}]}
     )
     for msg in result["messages"]:
         print(type(msg).__name__)
@@ -70,18 +79,24 @@ def weather_agent():
             print("Tool calls:\n", msg.tool_calls)
         print("-----")
 
-  
 
 def fruit_weather_agent():
     llm = local_gemma_model()
     agent = create_agent(
         model=llm,
         system_prompt="You are a helpful assistant that provides information about fruits and vegetables and there might custom names returned by tool.",
-        tools=[weather_tool,fruits_and_vegetables],
+        tools=[weather_tool, fruits_and_vegetables],
     )
 
     result = agent.invoke(
-        {"messages":[{"role":"user","content":"list fruits and vegetables & weather in Tokyo, Mumbai and New York"}]}
+        {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "list fruits and vegetables & weather in Tokyo, Mumbai and New York",
+                }
+            ]
+        }
     )
     for msg in result["messages"]:
         print(type(msg).__name__)
@@ -92,9 +107,10 @@ def fruit_weather_agent():
 
 
 def main():
-    
+
     fruit_weather_agent()
     weather_agent()
+
 
 if __name__ == "__main__":
     main()
