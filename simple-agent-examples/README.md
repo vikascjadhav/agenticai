@@ -15,7 +15,7 @@ This project showcases a basic LangChain agent that integrates with a local Gemm
 
 ## Prerequisites
 
-- Python 3.8 or higher
+- Python 3.12 or higher
 - LM Studio running locally with:
   - OpenAI-compatible API enabled at `http://localhost:1234/v1`
   - Model loaded: `google/gemma-3-4b`

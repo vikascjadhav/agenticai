@@ -1,26 +1,9 @@
-from unittest import result
-from urllib import response
-from xml.parsers.expat import model
-
-# from langchain.agents import create_agent
 from langchain.agents import create_agent
 from langchain_core.tools import tool
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI
-
-# llm = ChatOpenAI(
-#     base_url="http://localhost:1234/v1",
-#     api_key="lm-studio",
-#     model="google/gemma-3-4b"
-# )
-
-
 import os
 from dotenv import load_dotenv
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
 import json
-
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -53,10 +36,17 @@ def fruits_and_vegetables():
 
 @tool
 def weather_tool(location: str) -> str:
-    """Tool to get weather information for a given location."""
     # In a real implementation, you would call a weather API here.
     # For demonstration purposes, we'll return a static response.
-    return f"The current weather in {location} is sunny with a temperature of 25°C."
+    """Tool to get weather information for a given location."""
+    if location == "Tokyo":
+        return "The current weather in Tokyo is cloudy with a temperature of 20°C."
+    elif location == "Mumbai":
+        return "The current weather in Mumbai is rainy with a temperature of 28°C."
+    elif location == "New York":
+        return "The current weather in New York is sunny with a temperature of 22°C."
+    else:
+        return f"The current weather in {location} is not available."
 
 
 def weather_agent():
