@@ -1,0 +1,113 @@
+ [
+    {
+        "client_name": "Michael Anderson",
+        "transcript": [
+            "Client: I'd like to place an order for US Treasury bonds for about $75,000.",
+            "Advisor: Certainly. The 7-year Treasury is offering a competitive yield right now.",
+            "Client: That sounds good. Please proceed with the order.",
+            "Advisor: I'll execute the trade today and send you the confirmation by email once it settles.",
+            "Client: Great, and let's also schedule a portfolio review next month.",
+            "Advisor: I'll arrange the meeting and send you a calendar invite."
+        ]
+    },
+    {
+        "client_name": "Sarah Mitchell",
+        "transcript": [
+            "Client: I'd like to add more exposure to technology stocks.",
+            "Advisor: We could do that through a technology sector ETF.",
+            "Client: Let's invest $50,000.",
+            "Advisor: I'll place the order during today's market session.",
+            "Client: Perfect. Please send me the trade confirmation afterwards.",
+            "Advisor: Of course, I'll email the confirmation and performance summary."
+        ]
+    },
+    {
+        "client_name": "David Chen",
+        "transcript": [
+            "Client: I'm looking for something that generates steady income.",
+            "Advisor: Investment-grade corporate bonds could work well.",
+            "Client: Let's allocate $100,000.",
+            "Advisor: I'll execute the order today and share the settlement details.",
+            "Client: Thanks. Maybe we can review the income strategy later this quarter.",
+            "Advisor: Absolutely, I'll schedule a follow-up call."
+        ]
+    },
+    {
+        "client_name": "Emily Rodriguez",
+        "transcript": [
+            "Client: I want to diversify my portfolio internationally.",
+            "Advisor: A global equity fund would provide good diversification.",
+            "Client: Let's invest $60,000.",
+            "Advisor: I'll place the order this afternoon.",
+            "Client: Please send me the fund details as well.",
+            "Advisor: I'll include the fact sheet along with the confirmation."
+        ]
+    },
+    {
+        "client_name": "Robert Thompson",
+        "transcript": [
+            "Client: I'd like to add some gold exposure.",
+            "Advisor: A gold ETF could help hedge against inflation.",
+            "Client: Go ahead and invest $40,000.",
+            "Advisor: I'll place the order shortly.",
+            "Client: Great, please confirm once it's executed.",
+            "Advisor: I'll email the confirmation and update your portfolio report."
+        ]
+    },
+    {
+        "client_name": "Laura Bennett",
+        "transcript": [
+            "Client: I'm interested in sustainable investments.",
+            "Advisor: We have an ESG-focused global equity fund.",
+            "Client: Let's allocate $55,000.",
+            "Advisor: I'll process the investment today.",
+            "Client: Could you also send me the research report on that fund?",
+            "Advisor: Certainly, I'll email the report along with the transaction confirmation."
+        ]
+    },
+    {
+        "client_name": "James Wilson",
+        "transcript": [
+            "Client: I'd like to invest in a basket of blue-chip stocks.",
+            "Advisor: We can build a diversified portfolio of large-cap companies.",
+            "Client: Let's allocate $120,000.",
+            "Advisor: I'll execute the basket order during market hours today.",
+            "Client: Sounds good. Please confirm once it's done.",
+            "Advisor: I'll send you the execution summary and portfolio update."
+        ]
+    },
+    {
+        "client_name": "Olivia Parker",
+        "transcript": [
+            "Client: I'm looking for a safer short-term investment option.",
+            "Advisor: A short-duration bond fund could be suitable.",
+            "Client: Let's invest $45,000.",
+            "Advisor: I'll place the order today.",
+            "Client: Please send me the confirmation afterwards.",
+            "Advisor: I'll include the fund overview and performance data."
+        ]
+    },
+    {
+        "client_name": "Daniel Martinez",
+        "transcript": [
+            "Client: I'd like some exposure to emerging markets.",
+            "Advisor: An emerging markets ETF would give you diversified access.",
+            "Client: Let's allocate $70,000.",
+            "Advisor: I'll execute the order shortly.",
+            "Client: Please keep me updated once it's completed.",
+            "Advisor: I'll send the trade confirmation and market outlook."
+        ]
+    },
+    {
+        "client_name": "Sophia Green",
+        "transcript": [
+            "Client: I'd like to increase dividend income in my portfolio.",
+            "Advisor: A dividend-focused equity fund would work well.",
+            "Client: Let's invest $65,000.",
+            "Advisor: I'll place the order today.",
+            "Client: Great, and let's review the income strategy later this year.",
+            "Advisor: I'll schedule a review meeting and send the trade confirmation."
+        ]
+    }
+]
+
