@@ -2,7 +2,6 @@ import json
 import logging
 
 from agent_data_models import (
-    ActionItem,
     ActionItemRequest,
     ActionItemResult,
     AgentState,
@@ -53,8 +52,10 @@ def propose_action_items_node(state: AgentState):
         "node.end propose_action_items_node proposed_count=%s",
         len(proposal.proposed_action_items),
     )
+    # Store primitives in state/checkpoints to avoid custom-type serde warnings.
+    proposed_items = [item.model_dump() for item in proposal.proposed_action_items]
     return {
-        "proposed_action_items": proposal.proposed_action_items,
+        "proposed_action_items": proposed_items,
         "approved_action_items": [],
         "created_tasks": [],
         "review_index_of_action_items": 0,
@@ -76,7 +77,7 @@ def review_action_item_node(state: AgentState):
             "type": "review_action_item",
             "index": idx,
             "total": len(items),
-            "item": item.model_dump(),
+            "item": item,
             "question": "Approve this action item? (y/n)",
         }
     )
@@ -97,16 +98,17 @@ def review_action_item_node(state: AgentState):
 
 def create_approved_action_items_node(state: AgentState):
     logger.info("node.start create_approved_action_items_node")
-    created_tasks: list[ActionItemResult] = []
+    created_tasks: list[dict] = []
 
     for item in state["approved_action_items"]:
+        # Validate at boundary, then store as plain dict in state.
         task = ActionItemResult(
-            description=item.description,
-            owner=item.owner,
-            due_date=item.due_date,
+            description=item["description"],
+            owner=item["owner"],
+            due_date=item["due_date"],
             status="created",
         )
-        created_tasks.append(task)
+        created_tasks.append(task.model_dump())
         logger.info(
             "task.create description=%s owner=%s due_date=%s",
             task.description,
@@ -128,6 +130,7 @@ def review_router(state: AgentState):
 
 
 base_llm = local_gemma_model()
+# Strategic approach: keep graph state primitive, so default serializer is enough.
 store = InMemorySaver()
 
 agent = StateGraph(AgentState)
@@ -153,9 +156,13 @@ app = agent.compile(checkpointer=store)
 
 graph = app.get_graph()
 
-
-with open("graph.png", "wb") as f:
-    f.write(graph.draw_mermaid_png())
+try:
+    with open("graph.png", "wb") as f:
+        f.write(graph.draw_mermaid_png())
+except Exception as e:
+    logger.warning("graph.png render failed: %s", e)
+    with open("graph.mmd", "w", encoding="utf-8") as f:
+        f.write(graph.draw_mermaid())
 
 def run_hitl_flow():
     logger.info("agent.start")
@@ -207,5 +214,4 @@ def run_hitl_flow():
 
 
 if __name__ == "__main__":
-    pass
-    #run_hitl_flow()
+    run_hitl_flow()

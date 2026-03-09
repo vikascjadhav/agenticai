@@ -23,9 +23,10 @@ class ActionItemResult(BaseModel):
 class AgentState(TypedDict):
     text: str
     summary: str
-    proposed_action_items: list[ActionItem]
-    approved_action_items: list[ActionItem]
-    created_tasks: list[ActionItemResult]
+    # Keep checkpointed graph state primitive for stable serialization.
+    proposed_action_items: list[dict]
+    approved_action_items: list[dict]
+    created_tasks: list[dict]
     review_index_of_action_items: int
     messages: Annotated[list[BaseMessage], add_messages]
 
